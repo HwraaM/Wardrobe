@@ -1,45 +1,19 @@
-# Wardrobe: AI-Powered Smart Styling & Body Shape Analyzer 👗✨
+# Wardrobe
 
-**Wardrobe** is an intelligent iOS application designed to help users understand their body proportions and style garments accordingly, powered by **Apple Intelligence** for local, real-time photo analysis with absolute privacy.
+**Wardrobe** is an iOS styling app that determines your body shape from your measurements and evaluates whether a clothing item suits your proportions. It analyzes garment photos on-device using Apple's Foundation Models and provides research-based fit and styling tips.
 
----
+## Main Features
+- Enter and update body measurements (bust, waist, hips, and height) with real-time validation and automatic body shape calculation (**Hourglass**, **Pear**, **Inverted Triangle**, or **Apple**).
+- Capture or choose a photo of a garment to check if it is clothing and analyze its category, cut, fit, neckline, and design details.
+- Receive a tailored fit verdict (**Suitable** or **Consider an alternative**) with explanations and styling or alternative suggestions based on your body shape.
+- Navigate smoothly between onboarding, your profile, camera/photo selection, and body-shape result screens.
 
-##  Key Features
+## Technologies Used
+- **Swift & SwiftUI** for the user interface, navigation, and observable state (`@Observable`).
+- **FoundationModels** (`SystemLanguageModel`, `LanguageModelSession`, `@Generable`) for on-device garment analysis.
+- **UIKit (`UIImagePickerController`)** for camera capture alongside SwiftUI photo picking.
 
-1. **Smart Body Shape Calculation:**
-   - Automatically computes proportions using Bust, Waist, and Hip measurements to categorize the user's body shape into one of four types: **Hourglass**, **Pear**, **Inverted Triangle**, or **Apple**.
-   - Flexible number input parser supporting Eastern Arabic numerals (`٠١٢٣٤٥٦٧٨٩`) and various decimal separators (`,` and `٫`).
-
-2. **On-Device AI Garment Analysis:**
-   - Leverages the **`FoundationModels`** framework to analyze garment photos directly on the device via camera capture or photo library selection, ensuring **complete privacy** (photos never leave your device).
-   - Validates whether an image contains clothing (`isClothing`) and extracts its category, silhouette, fit, neckline, and design details.
-
-3. **Research-Based Fashion Rules Engine:**
-   - Matches garment attributes against curated styling rules tailored to each body shape, delivering clear verdicts:
-     - **Suitable:** Highlights why the piece flatters with a `"WHY IT WORKS"` breakdown.
-     - **Consider an alternative:** Explains the styling mismatch and suggests a better alternative via `"TRY INSTEAD"`.
-
-4. **Interactive Profile & Measurement Management:**
-   - An elegant profile dashboard (`profile_page`) displaying the user's body shape and icon, with real-time editing via precise decimal wheel pickers (`Wheel Picker`) to update styling recommendations instantly.
-
----
-
-##  Project Architecture
-
-- **`MyApp.swift`**: Main application entry point (`@main`).
-- **`ContentView.swift`**: Manages the splash screen (`SplashView`) transition via `NavigationStack`.
-- **`OnboardingData.swift`**: Shared observable state model (`@Observable`) handling measurements and validation logic.
-- **Onboarding Views:** `measurementsView2.swift` (Step 1: Bust & Waist) and `MeasurementsView.swift` (Step 2: Hips & Height).
-- **Profile & Background:** `profile_page.swift` and `BackgroundView.swift` (custom sewing-themed decorative background).
-- **Garment Check:** `DoesItFit.swift` (supports photo library picker and live `CameraPicker`).
-- **AI Analysis:** `GarmentAnalyzer.swift` & `GarmentDescription.swift` (structured data extraction using Apple's on-device models).
-- **Styling Logic:** `FashionRules.swift` (rules engine and `FitVerdict` generator).
-- **Result Views:** `Peartype.swift`, `HourglassType.swift`, `Appleshape.swift`, `InvertedTringleType.swift` (powered by the shared `GarmentResult.swift` component).
-
----
-
- Authors & Contributors
-- Fatimah Aljifry.
-- Deema Alqassem.
-- Jood Alassiri.
-- Atheer Alzhraani
+## Screenshots
+![Does it fit](Dose%20it%20fit.PNG)
+![Your Results](Your%20Results.PNG)
+![Body Measurements](Body%20Measurements.PNG)
